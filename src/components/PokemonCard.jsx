@@ -47,27 +47,29 @@ const PokemonCard = ({ pokemonId, onNavigate }) => {
         </div>
       </div>
       
-      <div className="pokemon-image">
-        <img 
-          src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default} 
-          alt={pokemon.name} 
-        />
-      </div>
-      
-      <div className="pokemon-stats">
-        <h3>Base Stats</h3>
-        {pokemon.stats.map(stat => (
-          <div key={stat.stat.name} className="stat-row">
-            <div className="stat-name">{formatStatName(stat.stat.name)}</div>
-            <div className="stat-value">{stat.base_stat}</div>
-            <div className="stat-bar">
-              <div 
-                className="stat-fill" 
-                style={{ width: `${Math.min(100, (stat.base_stat / 255) * 100)}%` }}
-              ></div>
+      <div className="pokemon-content">
+        <div className="pokemon-image">
+          <img 
+            src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default} 
+            alt={pokemon.name} 
+          />
+        </div>
+        
+        <div className="pokemon-stats">
+          <h3>Base Stats</h3>
+          {pokemon.stats.map(stat => (
+            <div key={stat.stat.name} className="stat-row">
+              <div className="stat-name">{formatStatName(stat.stat.name)}</div>
+              <div className="stat-value">{stat.base_stat}</div>
+              <div className="stat-bar">
+                <div 
+                  className="stat-fill" 
+                  style={{ width: `${Math.min(100, (stat.base_stat / 255) * 100)}%` }}
+                ></div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       <div className="navigation-buttons">
